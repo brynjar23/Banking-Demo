@@ -32,8 +32,8 @@ A full-stack banking application built as a technical demonstration. Features re
 - **Redis** (Upstash) — caching layer for transaction history
 - **RabbitMQ** (CloudAMQP) — async payment event queue
 - **JWT Bearer** — stateless authentication
-- **BCrypt** — password hashing
 - **Docker** — containerised deployment
+- **BCrypt** — password hashing
 
 ### Frontend
 - **React 19** with **TypeScript**
@@ -44,10 +44,22 @@ A full-stack banking application built as a technical demonstration. Features re
 ### Infrastructure
 - **Render** — backend hosting (Docker container)
 - **GitHub Pages** — frontend hosting
-- **GitHub Actions** — CI/CD pipeline
+- **GitHub Actions** — CI/CD pipeline that builds and tests on every push, auto-deploys frontend to GitHub Pages
 - **Neon** — serverless Postgres
 - **Upstash** — serverless Redis
 - **CloudAMQP** — managed RabbitMQ
+
+---
+
+## Security
+- **BCrypt** — passwords are hashed with BCrypt before storage, never stored in plain text
+- **JWT authentication** — stateless auth with signed tokens, validated on every request
+- **Rate limiting** — login endpoint limited to 5 requests per minute to prevent brute force attacks
+- **Security response headers** — `X-Content-Type-Options`, `X-Frame-Options` and `Referrer-Policy` headers on all responses
+- **Input validation** — all incoming requests validated with FluentValidation before hitting business logic
+- **HTTPS enforced** — all traffic encrypted in transit via Render and GitHub Pages
+- **Secrets management** — connection strings and JWT secret stored as environment variables, never committed to source control
+- **CORS policy** — API only accepts requests from known frontend origins
 
 ---
 
