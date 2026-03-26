@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
-COPY ../BankingDemo.Core ./BankingDemo.Core
-COPY ../BankingDemo.Infrastructure ./BankingDemo.Infrastructure
-COPY . ./BankingDemo.Api
+COPY BankingDemo.Core ./BankingDemo.Core
+COPY BankingDemo.Infrastructure ./BankingDemo.Infrastructure
+COPY BankingDemo.Api ./BankingDemo.Api
 RUN dotnet publish BankingDemo.Api/BankingDemo.Api.csproj -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
