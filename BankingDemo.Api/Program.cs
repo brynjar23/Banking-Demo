@@ -51,7 +51,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("Frontend", policy =>
         policy.WithOrigins(
             "http://localhost:5173",
-            "https://YOURUSERNAME.github.io")
+            "https://brynjar23.github.io")
         .AllowAnyHeader()
         .AllowAnyMethod());
 });
