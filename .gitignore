@@ -1,0 +1,10 @@
+# Secrets
+BankingDemo.Api/appsettings.json
+
+# Build output
+**/bin/
+**/obj/
+
+# Node
+banking-demo-ui/node_modules/
+banking-demo-ui/dist/
