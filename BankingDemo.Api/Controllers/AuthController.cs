@@ -1,6 +1,7 @@
 using BankingDemo.Core.DTOs;
 using BankingDemo.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace BankingDemo.Api.Controllers;
 
@@ -18,6 +19,7 @@ public class AuthController(AuthService authService) : ControllerBase
     }
 
     [HttpPost("login")]
+    [EnableRateLimiting("login")]
     public async Task<IActionResult> Login(LoginRequest req)
     {
         var result = await authService.LoginAsync(req);
